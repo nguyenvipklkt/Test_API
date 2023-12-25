@@ -5,30 +5,29 @@ let router = express.Router();
 
 /**
  * @swagger
- * /login:
+ * /api/v1/login:
  *   post:
- *     summary: User login
- *     description: Returns a JWT token upon successful login
- *     parameters:
- *       - in: body
- *         name: credentials
- *         description: User credentials
- *         schema:
- *           type: object
- *           properties:
- *             email:
- *               type: string
- *               description: Email
- *             password:
- *               type: string
- *               description: Password
+ *     summary: Login user
+ *     tags:
+ *       - Authentication
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
  *     responses:
- *       200:
- *         description: Successful login
- *         content:
- *           application/json:
- *             example:
- *               token: 'your.jwt.token'
+ *       "200":
+ *         description: Login successfull
+ *       "401":
+ *         description: Missing param
+ *       "500":
+ *         description: Internal server error
  */
 
 /**
@@ -36,30 +35,28 @@ let router = express.Router();
  * /api/v1/register:
  *   post:
  *     summary: User register
- *     description: Returns a JWT token upon successful register
- *     parameters:
- *       - in: body
- *         name: credentials
- *         description: User credentials
- *         schema:
- *           type: object
- *           properties:
- *             name:
- *               type: string
- *               description: Name
- *             email:
- *               type: string
- *               description: Email
- *             password:
- *               type: string
- *               description: Password
+ *     tags:
+ *       - Authentication
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
  *     responses:
- *       200:
- *         description: Successful register
- *         content:
- *           application/json:
- *             example:
- *               token: 'your.jwt.token'
+ *       "200":
+ *         description: Register successfull
+ *       "401":
+ *         description: Missing param
+ *       "500":
+ *         description: Internal server error
  */
 
 const initAuthRoute = (app) => {

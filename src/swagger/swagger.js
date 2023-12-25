@@ -13,10 +13,9 @@ const options = {
       },
     ],
     securityDefinitions: {
-      bearerAuth: {
+      Bearer: {
         type: "apiKey",
-        name: "x-auth-token",
-        scheme: "bearer",
+        name: "Authorization",
         in: "header",
       },
     },
