@@ -11,7 +11,12 @@ middleware.use((req, res, next) => {
     return res.status(401).json({ message: "Unauthorized" });
   }
   try {
-    const decodedToken = jsonwebtoken.verify(token, process.env.TOKEN_SECRET);
+    const tokenArray = token.split(" ");
+    console.log(tokenArray[1]);
+    const decodedToken = jsonwebtoken.verify(
+      tokenArray[1],
+      process.env.TOKEN_SECRET
+    );
     if (decodedToken === null) {
       // Token hết hạn
       console.log("Token expired");

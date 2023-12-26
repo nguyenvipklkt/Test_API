@@ -3,9 +3,9 @@ info:
   title: Authentication API
   version: 1.0.0
 paths:
-  /login:
+  /api/v1/login:
     post:
-      summary: Đăng nhập người dùng
+      summary: Login user
       tags:
         - Authentication
       requestBody:
@@ -21,8 +21,8 @@ paths:
                   type: string
       responses:
         "200":
-          description: Đăng nhập thành công
+          description: Login successfull
         "401":
-          description: Sai tên đăng nhập hoặc mật khẩu
+          description: Missing param
         "500":
-          description: Lỗi server
+          description: Internal server error

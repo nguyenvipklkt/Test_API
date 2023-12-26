@@ -3,7 +3,6 @@ import connectDB from "./configs/connectDB.js";
 import initUserRoute from "./routes/userRoute.js";
 import initAuthRoute from "./routes/auth.route.js";
 import middleware from "./middlewares/auth.middleware.js";
-import YAML from "yaml";
 import dotenv from "dotenv";
 import swaggerUi from "swagger-ui-express";
 import cors from "cors";
@@ -32,7 +31,7 @@ app.use(
 );
 
 initAuthRoute(app);
-// app.use(middleware);
+app.use(middleware);
 initUserRoute(app);
 
 app.listen(port, () => {

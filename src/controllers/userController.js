@@ -28,15 +28,17 @@ let updateProfileController = async (req, res) => {
         myDate: myDate,
       },
       {
-        where: {},
+        where: {
+          user_id: req.id,
+        },
       }
     );
     res.status(200).json({
-      message: "Cập nhật thông tin người dùng thành công",
+      message: "Update information of user successful!",
     });
   } else {
     res.status(404).json({
-      message: "Người dùng không tồn tại",
+      message: "Account doesn't exist!",
     });
   }
 };
@@ -47,12 +49,13 @@ let deleteAcount = async (req, res) => {
         user_id: req.id,
       },
     });
+    delete req.headers["authorization"];
     return res.status(200).json({
-      message: "Xoá người dùng thành công",
+      message: "Delete Account successfull!",
     });
   } catch (error) {
     return res.status(401).json({
-      message: "Xoá người dùng thất bại",
+      message: "Delete Account fail!",
     });
   }
 };
